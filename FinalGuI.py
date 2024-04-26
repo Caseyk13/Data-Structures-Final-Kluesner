@@ -24,7 +24,7 @@ from finalLodgic import UnitedQueque
 '''
 
 root = tkinter.Tk()
-jobs = []
+jobs = [["Please InPut Your Job's"]]
 
 u = UnitedQueque(jobs)
 
@@ -52,11 +52,12 @@ def addJob():
   jobs.append(job)
 
   updateListBox()
+  u.heap()
 
 
 def deleteAll():
     global jobs
-    jobs = []
+    jobs = [[]]
     a = "You Have No More Job's Yay !!!!!!"
     lblDisply["text"] = a
     updateListBox()
@@ -66,15 +67,18 @@ def lowPirority():
     jobs.reverse()
     updateListBox()
 def numJobs():
-    u.numJobs(jobs, u.heap(jobs))
+    u.numJobs(jobs, u.heap())
 
 def topPirority():
     u.topPirority()
-    jobs.sort()
+    jobs.reverse()
+    jobs
+
     updateListBox()
+    u.heap()
 
 def numJobs():
- num = f"Your Number Of Job's Is:", len(jobs)
+ num = f"Your Number Of Job's Is:", len(jobs)-1
  lblDisply["text"] = num
  updateListBox()
 
@@ -82,8 +86,9 @@ def deleteOne():
  job =listBoxone.get("active")
  if job in jobs:
   jobs.remove(job)
- updateListBox()
 
+ updateListBox()
+ u.heap()
 
 
 
